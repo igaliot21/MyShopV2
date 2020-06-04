@@ -69,7 +69,7 @@ namespace MyShop.WebUI.Controllers
             Product productToDelete = context.Find(Id);
             if (productToDelete == null) return HttpNotFound();
             else {
-                context.Delete(Id);
+                context.Delete(productToDelete.Id);
                 context.Commit();
 
                 return RedirectToAction("Index");
