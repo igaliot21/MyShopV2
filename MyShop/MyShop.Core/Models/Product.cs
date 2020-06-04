@@ -55,9 +55,9 @@ namespace MyShop.Core.Models
             get { return this.description; }
             set { this.description = value; }
         }
-        [Range(0.10, 1000, ErrorMessage = "Price must be positive")]
+        [Range(0.10, 1000)]
         [DataType(DataType.Currency)]
-        [Required(ErrorMessage = "Price is required")]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Price
         {
             get { return this.price; }
