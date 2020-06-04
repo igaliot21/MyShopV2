@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -54,8 +55,9 @@ namespace MyShop.Core.Models
             get { return this.description; }
             set { this.description = value; }
         }
-        [Range(0,1000)]
-        [Required]
+        [Range(0.10, 1000, ErrorMessage = "Price must be positive")]
+        [DataType(DataType.Currency)]
+        [Required(ErrorMessage = "Price is required")]
         public decimal Price
         {
             get { return this.price; }
