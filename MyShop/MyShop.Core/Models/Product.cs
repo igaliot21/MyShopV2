@@ -15,13 +15,13 @@ namespace MyShop.Core.Models
         private string id;
         private string name;
         private string description;
-        private decimal price;
+        private int price;
         private string category;
         private string image;
         public Product() {
             this.id = Guid.NewGuid().ToString();
         }
-        public Product(string Name, string Description, decimal Price, string Category)
+        public Product(string Name, string Description, int Price, string Category)
         {
             this.id = Guid.NewGuid().ToString();
             this.name = Name;
@@ -30,7 +30,7 @@ namespace MyShop.Core.Models
             this.category = Category;
             this.image = ""; // TODO poner una imagen por defecto
         }
-        public Product(string Name, string Description, decimal Price, string Category, string Image)
+        public Product(string Name, string Description, int Price, string Category, string Image)
         {
             this.id = Guid.NewGuid().ToString();
             this.name = Name;
@@ -55,10 +55,9 @@ namespace MyShop.Core.Models
             get { return this.description; }
             set { this.description = value; }
         }
-        [Range(0.10, 1000)]
-        [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal Price
+        [Range(1, 1000)]
+        [Required]
+        public int Price
         {
             get { return this.price; }
             set { this.price = value; }
