@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -41,9 +42,16 @@ namespace MyShop.WebUI.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Product product) {
+        public ActionResult Create(Product product, HttpPostedFileBase imageFile) {
             if (!ModelState.IsValid) return View(product);
             else {
+                if (imageFile != null)
+                {
+                    product.Image = product.Id + Path.GetExtension(imageFile.FileName);
+                    imageFile.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
+                }
+                else product.Image = "Default.jpg";
+
                 context.Insert(product);
                 context.Commit();
 
@@ -62,7 +70,7 @@ namespace MyShop.WebUI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(Product product, string Id) {
+        public ActionResult Edit(Product product, string Id, HttpPostedFileBase imageFile) {
             Product productToEdit = context.Find(Id);
             if (productToEdit == null) return HttpNotFound();
             else {
@@ -71,8 +79,14 @@ namespace MyShop.WebUI.Controllers
                     productToEdit.Name        = product.Name;
                     productToEdit.Description = product.Description;
                     productToEdit.Price       = product.Price;
-                    productToEdit.Image       = product.Image;
                     productToEdit.Category    = product.Category;
+
+                    if (imageFile != null)
+                    {
+                        productToEdit.Image = product.Id + Path.GetExtension(imageFile.FileName);
+                        imageFile.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
+                    }
+
                     context.Commit();
 
                     return RedirectToAction("Index");
