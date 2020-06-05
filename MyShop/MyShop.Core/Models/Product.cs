@@ -10,20 +10,19 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        private string id;
         private string name;
         private string description;
         private int price;
         private string category;
         private string image;
         public Product() {
-            this.id = Guid.NewGuid().ToString();
+            //this.id = Guid.NewGuid().ToString();
         }
         public Product(string Name, string Description, int Price, string Category)
         {
-            this.id = Guid.NewGuid().ToString();
+            //this.id = Guid.NewGuid().ToString();
             this.name = Name;
             this.description = Description;
             this.price = Price;
@@ -32,7 +31,7 @@ namespace MyShop.Core.Models
         }
         public Product(string Name, string Description, int Price, string Category, string Image)
         {
-            this.id = Guid.NewGuid().ToString();
+            //this.id = Guid.NewGuid().ToString();
             this.name = Name;
             if (Description == null || Description == "" || Description == " ") this.description = "No description";
             else this.description = Description;
@@ -40,9 +39,11 @@ namespace MyShop.Core.Models
             this.category = Category;
             this.image = Image;
         }
+        /*
         public string Id{
             get { return this.id; }
         }
+        */
         [StringLength(50)]
         [DisplayName("Product Name")]
         [Required]

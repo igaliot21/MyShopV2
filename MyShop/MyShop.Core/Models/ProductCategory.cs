@@ -8,23 +8,25 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class ProductCategory
+    public class ProductCategory : BaseEntity
     {
-        private string id;
+        //private string id;
         private string name;
         public ProductCategory()
         {
-            this.id = Guid.NewGuid().ToString();
+            // this.id = Guid.NewGuid().ToString();
         }
         public ProductCategory(string Name)
         {
-            this.id = Guid.NewGuid().ToString();
+            //this.id = Guid.NewGuid().ToString();
             this.name = Name;
         }
+        /*
         public string Id
         {
             get { return this.id; }
         }
+        */
         [StringLength(50)]
         [DisplayName("Product Category Name")]
         [Required]
