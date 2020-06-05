@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MyShop.Core;
 using MyShop.Core.Models;
 
-/* classes no longer in use, keep just for research purposes*/
+/* classes no longer in use, kept just for research purposes*/
 
 namespace MyShop.DataAccess.InMemory
 {
