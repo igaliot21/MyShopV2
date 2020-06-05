@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
+    <Compile Include="Migrations\202006051129150_InitialMigration.cs" />
+    <Compile Include="Migrations\202006051129150_InitialMigration.Designer.cs">
+      <DependentUpon>202006051129150_InitialMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +67,11 @@
       <Project>{26649BD0-F5E6-4AF5-9508-48B7BFB7EBC0}</Project>
       <Name>MyShop.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006051129150_InitialMigration.resx">
+      <DependentUpon>202006051129150_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
