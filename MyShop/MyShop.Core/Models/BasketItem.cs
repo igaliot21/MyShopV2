@@ -11,5 +11,11 @@ namespace MyShop.Core.Models
         public string BasketId { get; set; }
         public string ProductId { get; set; }
         public int Quantity { get; set; }
+        public BasketItem() { }
+        public BasketItem(string BasketId, string ProductId, int Quantity) {
+            this.BasketId = BasketId;
+            this.ProductId = ProductId;
+            this.Quantity = Quantity;
+        }
     }
 }
