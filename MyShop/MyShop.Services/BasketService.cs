@@ -57,6 +57,14 @@ namespace MyShop.Services
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
             if (item == null){
                 item = new BasketItem(basket.Id, productId, 1);
+                /*
+                item = new BasketItem()
+                {
+                    BasketId = basket.Id,
+                    ProductId = productId,
+                    Quantity = 1
+                };
+                */
                 basket.BasketItems.Add(item);
             }
             else item.Quantity++;
@@ -66,11 +74,12 @@ namespace MyShop.Services
         public void RemoveFromBasket(HttpContextBase httpContext, string ItemId) {
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == ItemId);
-            if (item == null){
+            if (item != null){
                 basket.BasketItems.Remove(item);
                 basketContext.Commit();
             }
         }
+
         public List<BasketItemViewModel> GetBasketItems(HttpContextBase httpContext) {
             Basket basket = GetBasket(httpContext, false);
             if (basket != null)
