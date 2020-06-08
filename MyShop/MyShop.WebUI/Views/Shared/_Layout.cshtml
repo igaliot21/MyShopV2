@@ -23,8 +23,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Product Administration", "Index", "ProductManager")</li>
-                    <li>@Html.ActionLink("Product Categories Administation", "Index", "ProductCategoryManager")</li>
+                    <li>@Html.ActionLink("Product Admin", "Index", "ProductManager")</li>
+                    <li>@Html.ActionLink("Product Categories Admin", "Index", "ProductCategoryManager")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -32,8 +32,10 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+    </div>
+    <div class="container">
         <footer>
+            <br /><br /><br /><br />
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
     </div>
