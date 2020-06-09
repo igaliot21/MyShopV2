@@ -39,6 +39,12 @@ namespace MyShop.Core.Models
             this.category = Category;
             this.image = Image;
         }
+        public Product(string Id, string Name, int Price)
+        {
+            this.Id = Id;
+            this.name = Name;
+            this.price = Price;
+        }
         /*
         public string Id{
             get { return this.id; }
