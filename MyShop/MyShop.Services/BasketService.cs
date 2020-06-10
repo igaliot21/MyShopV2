@@ -21,7 +21,6 @@ namespace MyShop.Services
             this.productContext = ProductContext;
             this.basketContext = BasketContext;
         }
-
         private Basket GetBasket(HttpContextBase httpContext, bool CreateIfNull) {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
             Basket basket = new Basket();
@@ -38,7 +37,6 @@ namespace MyShop.Services
             }
             return basket; 
         }
-
         private Basket CreateNewBasket(HttpContextBase httpContext) {
             Basket basket = new Basket();
 
@@ -51,7 +49,6 @@ namespace MyShop.Services
 
             return basket;
         }
-
         public void AddToBasket(HttpContextBase httpContext, string productId){
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
@@ -70,7 +67,6 @@ namespace MyShop.Services
             else item.Quantity++;
             basketContext.Commit();
         }
-
         public void RemoveFromBasket(HttpContextBase httpContext, string ItemId) {
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == ItemId);
@@ -79,7 +75,6 @@ namespace MyShop.Services
                 basketContext.Commit();
             }
         }
-
         public List<BasketItemViewModel> GetBasketItems(HttpContextBase httpContext) {
             Basket basket = GetBasket(httpContext, false);
             if (basket != null)
@@ -119,5 +114,10 @@ namespace MyShop.Services
             }
             else return model;
         }
-    }
+        public void ClearBasket (HttpContextBase httpContext){
+            Basket basket = GetBasket(httpContext, false);
+            basket.BasketItems.Clear();
+            basketContext.Commit();
+        }
+    } 
 }
