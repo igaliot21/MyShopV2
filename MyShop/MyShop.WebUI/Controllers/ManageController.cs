@@ -20,11 +20,13 @@ namespace MyShop.WebUI.Controllers
         {
         }
 
+        /* // se elimina pork pilla de... somewhere? no me ha quedado claro, pero lo hace magicamente, tengo que mirarlo más
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
+        */
 
         public ApplicationSignInManager SignInManager
         {
