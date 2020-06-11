@@ -11,5 +11,9 @@ namespace MyShop.Core.Intefaces
     public interface IOrderService
     {
         void CreateOrder(Order baseOrder, List<BasketItemViewModel> basketItem);
+        List<Order> GetOrderList();
+        Order GetOrder(string Id);
+        void UpdateOrder(Order UpdatedOrder);
+        void DeleteOrder(string Id);
     }
 }

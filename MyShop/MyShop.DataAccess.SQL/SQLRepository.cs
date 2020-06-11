@@ -34,16 +34,16 @@ namespace MyShop.DataAccess.SQL
                 if (context.Entry(item).State == EntityState.Detached) dbSet.Attach(item);
                 dbSet.Remove(item);
             }
-            else throw new Exception(className + "not found");
+            else throw new Exception(className + " not found");
         }
         public T Find(string ID){
             if (dbSet.Find(ID) != null) return dbSet.Find(ID);
-            else throw new Exception(className + "not found");
+            else throw new Exception(className + " not found");
         }
         public void Update(T item)
         {
             if (dbSet.Attach(item) != null) context.Entry(item).State = EntityState.Modified;
-            else throw new Exception(className + "not found");
+            else throw new Exception(className + " not found");
         }
     }
 }
